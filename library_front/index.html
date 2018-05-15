@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>LIBRARY FRONT</title>
+  </head>
+  <body>
+    <section menu>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ADDING FUNCTIONS
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <button type="button" class="dropdown-item" add-reader-show-form-button>ADD READER</button>
+                  <button type="button" class="dropdown-item" add-title-show-form-button>ADD TITLE</button>
+                  <button type="button" class="dropdown-item" add-piece-show-form-button>ADD PIECE</button>
+                  <button type="button" class="dropdown-item" rent-book-show-form-button>RENT BOOK</button>
+                  <button type="button" class="dropdown-item" return-book-show-form-button>RETURN BOOK</button>
+                </div>
+            </div>  
+              
+          </div>
+          <div class="col-sm">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  GETTING FUNCTIONS
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <button type="button" class="dropdown-item" get-readers-button>SHOW ALL READERS</button>
+                  <button type="button" class="dropdown-item" get-title-button>SHOW ALL TITLES</button>
+                  <button type="button" class="dropdown-item" get-pieces-button>SHOW ALL PIECES</button>
+                  <button type="button" class="dropdown-item" get-rentals-button>SHOW ALL RENTALS</button>
+                </div>
+            </div>  
+          </div>
+          <div class="col-sm">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  OTHER FUNCTIONS
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <button type="button" class="dropdown-item" change-status-show-form-button>CHANGE PIECE STATUS</button>
+                  <button type="button" class="dropdown-item" rental-pieces-show-form-button>SHOW RENTAL PIECES OF TITLE</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section adding-section>
+      <form class="adding-form" add-reader-form>
+        <div class="form-group">
+          <label>Reader firstname</label>
+          <input type="text" name="firstname" class="form-control" placeholder="Enter reader's firstname">
+        </div>
+        <div class="form-group">
+          <label>Reader lastname</label>
+          <input type="text" name="lastname" class="form-control" placeholder="Enter reader's lastname">
+        </div>
+        <button type="submit" class="btn btn-secondary" add-reader-button>Add reader!</button>
+      </form>
+
+      <form class="adding-form" add-title-form>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Enter book's title">
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" name="author" class="form-control" placeholder="Enter book's author">
+        </div>
+        <div class="form-group">
+          <label>Publication year</label>
+          <input type="number" name="publication year" class="form-control" placeholder="Enter book's publication year">
+        </div>
+        <button type="submit" class="btn btn-secondary" add-title-button>Add title!</button>
+      </form>
+
+      <form class="adding-form" add-piece-form>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Enter book's title">
+        </div>
+        <button type="submit" class="btn btn-secondary" add-piece-button>Add piece!</button>
+      </form>
+
+      <form class="adding-form" rent-book-form>
+        <div class="form-group">
+          <label>Piece ID</label>
+          <input type="number" name="piece id" class="form-control" placeholder="Enter piece's ID">
+        </div>
+        <div class="form-group">
+          <label>Reader ID</label>
+          <input type="number" name="reader id" class="form-control" placeholder="Enter reader's ID">
+        </div>
+        <button type="submit" class="btn btn-secondary" rent-book-button>Rent book!</button>
+      </form>
+
+      <form class="adding-form" return-book-form>
+        <div class="form-group">
+          <label>Rental ID</label>
+          <input type="number" name="rental id" class="form-control" placeholder="Enter rental's ID">
+        </div>
+        <button type="submit" class="btn btn-secondary" return-book-button>Return book!</button>
+      </form>
+
+      <form class="adding-form" change-status-form>
+        <div class="form-group">
+          <label>Piece ID</label>
+          <input type="number" name="piece id" class="form-control" placeholder="Enter piece's ID">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <input type="text" name="status" class="form-control" placeholder="Enter piece's status">
+        </div>
+        <button type="submit" class="btn btn-secondary" change-status-button>Change status!</button>
+      </form>
+
+      <form class="adding-form" rental-piece-form>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Enter book's title">
+        </div>
+        <button type="submit" class="btn btn-secondary" rental-piece-button>Get quantity!</button>
+      </form>
+    </section>
+
+
+
+    <section data-container-section>
+      <h2 what-i-get></h2>
+      <div data-container></div>
+    </section>
+
+ 
+    <div class="invisible"  readers-list>
+     <form class="creating-form" data-reader-id="0">
+        <fieldset data-reader-name-section>
+        <label>
+          Reader name
+        </label>
+        <p data-reader-name-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-reader-surname-section>
+        <label>
+          Reader surname
+        </label>
+        <p data-reader-surname-paragraph class="db-data-attribute"></p>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="invisible" titles-list>
+     <form class="creating-form" data-title-id="0">
+        <fieldset data-title-section>
+        <label>
+          Title
+        </label>
+        <p data-title-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-author-section>
+        <label>
+          Author
+        </label>
+        <p data-author-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-publication-year-section>
+        <label>
+          Publication year
+        </label>
+        <p data-publication-year-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-pieces-section>
+        <label>
+          Pieces
+        </label>
+        <div pieces-container></div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="invisible" pieces-list>
+     <form class="creating-form" data-piece-id="0">
+        <fieldset data-id-section>
+        <label>
+          ID
+        </label>
+        <p data-id-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-status-section>
+        <label>
+          Status
+        </label>
+        <p data-status-paragraph class="db-data-attribute"></p>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="invisible" rents-list>
+     <form class="creating-form" data-rent-id="0">
+        <fieldset data-name-of-book-section>
+        <label>
+          Title
+        </label>
+        <p data-name-of-book-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-reader-surname-section>
+        <label>
+          Reader surname
+        </label>
+        <p data-reader-surname-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-rent-date-section>
+        <label>
+          Rent date
+        </label>
+        <p data-rent-date-paragraph class="db-data-attribute"></p>
+        </fieldset>
+
+        <fieldset data-return-date-section>
+        <label>
+          Return date
+        </label>
+        <p data-return-date-paragraph class="db-data-attribute"></p>
+        </fieldset>
+      </form>
+    </div>
+
+    
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+
+  </body>
+</html>

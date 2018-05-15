@@ -1,0 +1,35 @@
+.adding-form {
+	display: none;
+	margin: 10px;
+}
+
+.invisible {
+	display: none;
+}
+
+.getting-form {
+	border: 5px solid black;
+	background-color: yellow;
+}
+
+.creating-form  {
+	background-color: yellow;
+	border: 5px solid black;
+	margin: 10px;
+	padding: 10px;
+
+}
+
+.creating-form label {
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.creating-form p {
+	font-size: 17px;
+	padding: 4px;
+}
+
+
+
+
