@@ -1,61 +1,97 @@
 $(document).ready(function() {
-  const apiRoot = 'http://localhost:8080/library/';
+  const apiRoot = 'https://sleepy-scrubland-36856.herokuapp.com/library/';
+  const $title = $('[data-container-section]').find('[what-i-get]');
   const $container = $('[data-container]');
   const readersList = $('[readers-list]').children()[0];
   const titlesList = $('[titles-list]').children()[0];
   const piecesList = $('[pieces-list]').children()[0];
   const rentsList = $('[rents-list]').children()[0];
-
-
-
-  var availableReaders = {};
   
 
-  // init
-
   $('[add-reader-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[add-reader-form]').slideToggle();
+    makeInvisible();
+    $('[add-reader-form]').slideDown();
   })
 
   $('[add-title-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[add-title-form]').slideToggle();
+    makeInvisible();
+    $('[add-title-form]').slideDown();
   })
 
   $('[add-piece-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[add-piece-form]').slideToggle();
+    makeInvisible();
+    $('[add-piece-form]').slideDown();
   })
 
   $('[rent-book-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[rent-book-form]').slideToggle();
+    makeInvisible();
+    $('[rent-book-form]').slideDown();
   })
 
   $('[return-book-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[return-book-form]').slideToggle();
+    makeInvisible();
+    $('[return-book-form]').slideDown();
   })
 
   $('[change-status-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[change-status-form]').slideToggle();
+    makeInvisible();
+    $('[change-status-form]').slideDown();
   })
 
   $('[rental-pieces-show-form-button]').on('click', function() {
+  	$title.text("");
     $container.empty();
-    $('[rental-piece-form]').slideToggle();
+    makeInvisible();
+    $('[rental-piece-form]').slideDown();
   })
 
-  
+  $('[get-readers-button]').on('click', function() {
+  	makeInvisible();
+  });
+
+  $('[get-title-button]').on('click', function() {
+    makeInvisible();
+  });
+
+  $('[get-pieces-button]').on('click', function() {
+  	makeInvisible();
+  });
+
+  $('[get-rentals-button]').on('click', function() {
+  	makeInvisible();
+  });
+
+  function makeInvisible() {
+  	$('[add-reader-form]').hide();
+  	$('[add-title-form]').hide();
+  	$('[add-piece-form]').hide();
+  	$('[rent-book-form]').hide();
+  	$('[return-book-form]').hide();
+  	$('[change-status-form]').hide();
+  	$('[rental-piece-form]').hide();
+
+  }
 
   function createReader(reader) {
     const element = $(readersList).clone();
 
     element.attr('data-reader-id', reader.id);
+    element.find('[data-reader-id-section] [data-reader-id-paragraph]').text(reader.readerId);
     element.find('[data-reader-name-section] [data-reader-name-paragraph]').text(reader.name);
     element.find('[data-reader-surname-section] [data-reader-surname-paragraph]').text(reader.surname);
+    element.find('[data-reg-date-section] [data-reg-date-paragraph]').text(reader.regDate);
 
     return element;
   }
@@ -66,6 +102,7 @@ $(document).ready(function() {
     var piecesContainer = $(element).find('[pieces-container]');
 
     element.attr('data-title-id', title.id);
+    element.find('[data-title-id-section] [data-title-id-paragraph]').text(title.titleId);
     element.find('[data-title-section] [data-title-paragraph]').text(title.title);
     element.find('[data-author-section] [data-author-paragraph]').text(title.author);
     element.find('[data-publication-year-section] [data-publication-year-paragraph]').text(title.spendYear);
@@ -95,6 +132,7 @@ $(document).ready(function() {
     const element = $(rentsList).clone();
 
     element.attr('data-rent-id', rent.id);
+    element.find('[data-rental-id-section] [data-rental-id-paragraph]').text(rent.rentalId);
     element.find('[data-name-of-book-section] [data-name-of-book-paragraph]').text(rent.nameOfBook);
     element.find('[data-reader-surname-section] [data-reader-surname-paragraph]').text(rent.readerSurname);
     element.find('[data-rent-date-section] [data-rent-date-paragraph]').text(rent.rentDate);
@@ -127,9 +165,25 @@ $(document).ready(function() {
     });
   }
 
+  function createBoardOfOnlyPieces(pieces) {
+    $container.empty();
+
+    $('[what-i-get]').text("PIECES FROM DATABASE");
+
+    pieces.forEach(function(piece) {
+      var $datatableRowEl = createPiece(piece);
+
+      $datatableRowEl
+        .appendTo($container);
+    });
+  }
+
   function createBoardOfTitles(titles) {
     $container.empty();
     
+    $('[what-i-get]').text("TITLES FROM DATABASE");
+
+
     titles.forEach(function(title) {
       var $datatableRowEl = createTitle(title);
 
@@ -140,6 +194,9 @@ $(document).ready(function() {
 
   function createBoardOfRents(rentals) {
     $container.empty();
+
+    $('[what-i-get]').text("RENTALS FROM DATABASE");
+
     
     rentals.forEach(function(rent) {
       var $datatableRowEl = createRent(rent);
@@ -303,6 +360,66 @@ $(document).ready(function() {
     });
   }
 
+  function handleReadersGetRequest() {
+    event.preventDefault();
+
+               
+    var requestUrl = apiRoot + 'getAllReaders';
+
+    $.ajax({
+      url: requestUrl,
+      method: 'GET',
+      success: function(readers) {
+        createBoardOfReaders(readers);
+      }
+    });
+  }
+
+  function handleTitlesGetRequest() {
+    event.preventDefault();
+
+               
+    var requestUrl = apiRoot + 'getAllTitles';
+
+    $.ajax({
+      url: requestUrl,
+      method: 'GET',
+      success: function(titles) {
+        createBoardOfTitles(titles);
+      }
+    });
+  }
+
+  function handlePiecesGetRequest() {
+    event.preventDefault();
+
+               
+    var requestUrl = apiRoot + 'getAllPieces';
+
+    $.ajax({
+      url: requestUrl,
+      method: 'GET',
+      success: function(pieces) {
+        createBoardOfOnlyPieces(pieces);
+      }
+    });
+  }
+
+  function handleRentalsGetRequest() {
+    event.preventDefault();
+
+               
+    var requestUrl = apiRoot + 'getAllRentals';
+
+    $.ajax({
+      url: requestUrl,
+      method: 'GET',
+      success: function(rentals) {
+        createBoardOfRents(rentals);
+      }
+    });
+  }
+
   $('[add-reader-form]').on('submit', handleReaderSubmitRequest);
   $('[add-title-form').on('submit', handleTitleSubmitRequest);
   $('[add-piece-form]').on('submit', handlePieceSubmitRequest);
@@ -310,6 +427,11 @@ $(document).ready(function() {
   $('[return-book-form]').on('submit', handleReturnUpdateRequest);
   $('[change-status-form]').on('submit', handlePieceUpdateRequest);
   $('[rental-piece-form]').on('submit', handleRentalPiecesGetRequest);
+
+  $('[get-readers-button]').on('click', handleReadersGetRequest);
+  $('[get-title-button]').on('click', handleTitlesGetRequest);
+  $('[get-pieces-button]').on('click', handlePiecesGetRequest);
+  $('[get-rentals-button]').on('click', handleRentalsGetRequest);
 
 })
 
