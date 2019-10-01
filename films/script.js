@@ -47,7 +47,7 @@ var films= (function() {
     }
 
     function buildUrlForRequest() {
-        var base = "http://www.omdbapi.com/?apikey=e48dc44f";
+        var base = "https://www.omdbapi.com/?apikey=e48dc44f";
 
         if(ifMovieTitleEntered() == "") {
             openErrorModal("Enter title first!");
@@ -134,7 +134,7 @@ var films= (function() {
     }
 
     function getMovieInfo(detailsOrRating, title) {
-        let url = "http://www.omdbapi.com/?apikey=e48dc44f&t=";
+        let url = "https://www.omdbapi.com/?apikey=e48dc44f&t=";
         
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
