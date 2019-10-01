@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Application</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Library</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown07">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    </li>
+                </ul>
+                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#advance" aria-expanded="false" aria-controls="advance">
+                        Advanced
+                </button>
+                <form class="form-inline my-2 my-md-0" id="searching-form">
+                    <input class="form-control" id="searching-form-input" type="text" placeholder="Enter title...">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- after click advanced button -->
+    <div class="collapse" id="advance">
+        <div class="container">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="checkbox" type="checkbox" id="movie-type" value="&type=movie">
+                        <label class="form-check-label" for="movie-type">Movie</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="checkbox" type="checkbox" id="series-type" value="&type=series">
+                        <label class="form-check-label" for="series-type">Series</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="checkbox" type="checkbox" id="episode-type" value="&type=episode">
+                        <label class="form-check-label" for="episode-type">Episode</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="year-input">Year</span>
+                          </div>
+                          <input type="number" id="released-year-input" class="form-control" aria-label="Default" aria-describedby="year-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+          
+    <!-- Modal for errors -->
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warrning!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for movie -->
+    <div class="modal fade bd-example-modal-lg" id="movie-details-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Movie details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body" id="movie-details"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row" id="films-list">
+                <!-- pattern for films -->
+                <div class="col-md-3" id="film-pattern" style="display: none;">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" id="poster" style="height: 225px; width: 55%; display: block;">
+                        <div class="card-body">
+                            <p class="card-text" id="title" style="text-align:center;"></p>
+                            <div class="d-flex justify-content-between">
+                                <div class="btn-group">
+                                    <button type="button" id="more-info-btn" class="btn btn-sm btn-outline-secondary">More details</button>
+                                    <button type="button" id="ratings-btn" class="btn btn-sm btn-outline-secondary">Ratings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="btn-center" id="more-movies-div" style="display: none;"> 
+                <button id="more-movies-btn" class="btn btn-primary">Load more videos!</button> 
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container">
+    <p class="float-right">
+        <a href="#">Back to top</a>
+    </p>
+    <p>Album example is Â© Bootstrap, but please download and customize it for yourself!</p>
+    <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
