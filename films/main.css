@@ -1,0 +1,28 @@
+html,body{
+    height: 100%
+}
+
+.form-control {
+    width: 90px;
+}
+
+.card-img-top {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.card-text{
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+p.card-text:hover{
+    white-space: normal;
+    text-overflow: initial;
+    overflow: visible;
+}
+
+.btn-center {
+    text-align: center;
+}
